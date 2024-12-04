@@ -2,10 +2,15 @@ import * as dao from "./dao.js";
 import * as modulesDao from "../Modules/dao.js";
 
 export default function CourseRoutes(app) {
-  app.get("/api/courses", async (req, res) => {
-    const courses = await dao.findAllCourses();
-    res.send(courses);
-  });
+
+
+
+
+app.post("/api/courses", async (req, res) => {
+    const course = await dao.createCourse(req.body);
+    res.json(course);
+});
+ 
 
 
 app.put("/api/courses/:courseId", async (req, res) => {
