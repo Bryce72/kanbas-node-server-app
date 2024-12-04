@@ -2,7 +2,7 @@ import model from "./model.js";
 
 
 export function findAllCourses(){
-    return model.find;
+    return model.find();
 }
 
 export function findCoursesForEnrolledUser(userId) {
