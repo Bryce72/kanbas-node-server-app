@@ -14,4 +14,12 @@ export default function ModuleRoutes(app) {
         const status = await modulesDao.deleteModule(moduleId);
         res.send(status);
     });
+
+
+    app.get("/api/courses/:courseId/modules", async (req, res) => {
+        const { courseId } = req.params;
+        const modules = await modulesDao.findModulesForCourse(courseId);
+        res.json(modules);
+      });
+     
 }
