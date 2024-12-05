@@ -13,3 +13,7 @@ export function enrollUserInCourse(user, course) {
 export function unenrollUserFromCourse(user, course) {
  return model.deleteOne({ user, course });
 }
+
+export async function getAllEnrollments() {
+  return model.find().populate("user").populate("course");
+}
