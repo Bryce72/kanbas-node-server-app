@@ -161,7 +161,7 @@ export default function UserRoutes(app) {
         res.send(status);
     };
 
-
+    
 
     app.post("/api/users/:uid/courses/:cid", enrollUserInCourse);
     app.delete("/api/users/:uid/courses/:cid", unenrollUserFromCourse);
