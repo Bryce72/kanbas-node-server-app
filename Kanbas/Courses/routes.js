@@ -4,7 +4,21 @@ import * as enrollmentsDao from "../Enrollments/dao.js";
 export default function CourseRoutes(app) {
 
 
+  const findCoursesForEnrolledUser = async (req, res) => {
+    let { userId } = req.params;
+    if (userId === "current") {
+        const currentUser = req.session["currentUser"];
+        if (!currentUser) {
+            res.sendStatus(401);
+            return;
+        }
+        userId = currentUser._id;
+    }
+    const courses = await courseDao.findCoursesForEnrolledUser(userId);
+    res.json(courses);
 
+};
+app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
 
 app.post("/api/courses", async (req, res) => {
     const course = await dao.createCourse(req.body);
