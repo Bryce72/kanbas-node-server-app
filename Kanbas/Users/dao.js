@@ -24,11 +24,7 @@ export const findUsersByPartialName = (partialName) => {
   });
 };
 
-
-
-export function GETAllCourses(){
-  return model.find();
-}
+export const findAllCourses = () => courseModel.find();
 
 
 

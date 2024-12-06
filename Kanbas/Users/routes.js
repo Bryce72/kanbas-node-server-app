@@ -162,7 +162,18 @@ export default function UserRoutes(app) {
     };
 
 
-    app.get("/api/courses", GETAllCourses());
+    const getAllCourses = async (req, res) => {
+        try {
+            const courses = await courseDao.findAllCourses();
+            res.json(courses);
+        } catch (error) {
+            console.error("Error fetching courses: ", error);
+            res.status(500).json({ message: "Error fetching courses" });
+        }
+    };
+
+    app.get("/api/courses", getAllCourses);
+
 
 
     app.post("/api/users/:uid/courses/:cid", enrollUserInCourse);
