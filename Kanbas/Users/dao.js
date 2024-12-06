@@ -26,3 +26,9 @@ export const findUsersByPartialName = (partialName) => {
 
 
 
+export function GETAllCourses(){
+  return model.find();
+}
+
+
+

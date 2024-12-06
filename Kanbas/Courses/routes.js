@@ -51,7 +51,6 @@ app.get("/api/courses/:courseId/modules", async (req, res) => {
 });
 
 
-app.get("/api/courses", findAllCourses());
 
 }
 
